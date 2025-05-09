@@ -71,7 +71,11 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  services.udev.packages = [ pkgs.gnome-settings-daemon ];
+
   environment.systemPackages = with pkgs; [
+    gnomeExtensions.appindicator
+    python314
     vim
     tmux
     pass

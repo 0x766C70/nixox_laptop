@@ -11,6 +11,9 @@
 
   home.packages = with pkgs; [
   vlc
+  nextcloud-client
+  element-desktop
+  whatsapp-for-linux
   ];
 
   home.file.gpgSshKeys = {
@@ -20,14 +23,12 @@
                                                '';
   }; 
   
-  # basic configuration of git, please change to your own
   programs.git = {
     enable = true;
     userName = "vlp";
     userEmail = "vlp@fdn.fr";
   };
 
-  # starship - an customizable prompt for any shell
   programs.starship = {
     enable = true;
     # custom settings
@@ -39,7 +40,6 @@
     };
   };
 
-  # alacritty - a cross-platform, GPU-accelerated terminal emulator
   programs.alacritty = {
     enable = true;
     # custom settings
@@ -47,7 +47,7 @@
       env.TERM = "xterm-256color";
       font = {
         size = 12;
-        draw_bold_text_with_bright_colors = true;
+        #draw_bold_text_with_bright_colors = true;
       };
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;
@@ -63,10 +63,13 @@
       gpgconf --launch gpg-agent
     '';
 
-    # set some aliases, feel free to add more or remove some
     shellAliases = {
       fr = "sudo nixos-rebuild switch --flake /home/vlp/nixos_laptop";
       laptop = "ssh laptop.vlp.fdn.fr -p 8024";
+      maison = "ssh maison.vlp.fdn.fr -p 1337";
+      botbotbox = "ssh botbotbox.vlp.fdn.fr -p 8022";
+      new-dl = "ssh new-dl.vlp.fdn.fr -p 8023";
+      
     };
   };
 
