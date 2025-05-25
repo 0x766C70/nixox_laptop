@@ -76,6 +76,8 @@
   environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator
     python314
+    filezilla
+    openvpn
     vim
     tmux
     pass

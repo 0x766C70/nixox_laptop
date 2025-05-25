@@ -11,9 +11,11 @@
 
   home.packages = with pkgs; [
   vlc
+  gimp
   nextcloud-client
   element-desktop
   whatsapp-for-linux
+  libreoffice
   ];
 
   home.file.gpgSshKeys = {
@@ -66,6 +68,7 @@
     shellAliases = {
       fr = "sudo nixos-rebuild switch --flake /home/vlp/nixos_laptop";
       laptop = "ssh laptop.vlp.fdn.fr -p 8024";
+      azul = "ssh azul.vlp.fdn.fr -p 22";
       maison = "ssh maison.vlp.fdn.fr -p 1337";
       botbotbox = "ssh botbotbox.vlp.fdn.fr -p 8022";
       new-dl = "ssh new-dl.vlp.fdn.fr -p 8023";
