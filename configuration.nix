@@ -77,6 +77,7 @@
     gnomeExtensions.appindicator
     python314
     filezilla
+    pdfarranger
     openvpn
     vim
     tmux
@@ -101,6 +102,7 @@
     aria2
     socat
     nmap
+    ghostscript
     ipcalc 
     cowsay
     file
@@ -125,6 +127,10 @@
     pciutils
     usbutils
     pinentry-gnome3
+    cups-brother-hll2375dw
+    gupnp-tools
+    sshfs
+    tig
   ];
 
   services.pcscd.enable = true;
@@ -133,6 +139,18 @@
      pinentryPackage = pkgs.pinentry-gnome3;
      enableSSHSupport = true;
   };
+
+  #fileSystems."/home/vlp/Media" = {
+  #device = "mlc@192.168.101.12:/home/mlc/";
+  #fsType = "sshfs";
+  #options = [
+  #  "nodev"
+  #  "noatime"
+  #  "allow_other"
+  #  "IdentityFile=/home/vlp/.ssh/id_ed25519"
+  #];
+  #};
+
 
   system.stateVersion = "24.11"; # Did you read the comment?
 

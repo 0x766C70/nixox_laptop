@@ -12,10 +12,12 @@
   home.packages = with pkgs; [
   vlc
   gimp
+  exiftool
   nextcloud-client
   element-desktop
   whatsapp-for-linux
   libreoffice
+  gajim
   ];
 
   home.file.gpgSshKeys = {
@@ -70,9 +72,13 @@
       laptop = "ssh laptop.vlp.fdn.fr -p 8024";
       azul = "ssh azul.vlp.fdn.fr -p 22";
       maison = "ssh maison.vlp.fdn.fr -p 1337";
+      new-azul = "ssh new-azul.vlp.fdn.fr -p 22";
       botbotbox = "ssh botbotbox.vlp.fdn.fr -p 8022";
       new-dl = "ssh new-dl.vlp.fdn.fr -p 8023";
-      
+      webcam_off = "sudo rmmod -f uvcvideo";
+      webcam_on = "sudo modprobe uvcvideo";
+      tunnel_espana = "ssh new-azul.vlp.fdn.fr -ND 2222 -p 22";
+      tunnel_espana_rpb = "ssh new-azul-esp.vlp.fdn.fr -ND 2222 -p 1338";
     };
   };
 
