@@ -18,6 +18,7 @@
   whatsapp-for-linux
   libreoffice
   gajim
+  copyq
   ];
 
   home.file.gpgSshKeys = {
