@@ -19,7 +19,6 @@
   gajim
   copyq
   discord
-  android-studio
   ];
   
   programs.git = {
