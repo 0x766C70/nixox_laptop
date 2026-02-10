@@ -68,6 +68,9 @@
     };
   };
 
+  # SSH config symlink
+  home.file.".ssh/config".source = config.lib.file.mkOutOfStoreSymlink "/home/vlp/Nextcloud/Documents/it/ssh/config";
+
   home.stateVersion = "24.11";
   programs.home-manager.enable = true;
 }
