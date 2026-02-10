@@ -199,9 +199,3 @@ Want me to review the rest of your config? Or are we diving deeper into this rab
 - **Stay updated**: *"NixOS evolves faster than a Pokémon on steroids. Always check the [manual](https://nixos.org/manual/nixos/stable/) if something seems off."*
 
 - **Have fun**: *"If you’re not enjoying this, you’re doing it wrong. NixOS is like a puzzle, and you’re the genius solving it."*
-
-
-
----
-
-**Ready to Nixify your laptop?** Let’s see that config! 🚀
