@@ -10,7 +10,6 @@
   };
 
   home.packages = with pkgs; [
-  vlc
   gimp
   exiftool
   nextcloud-client
@@ -19,6 +18,8 @@
   libreoffice
   gajim
   copyq
+  discord
+  android-studio
   ];
 
   home.file.gpgSshKeys = {

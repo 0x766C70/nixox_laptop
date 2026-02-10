@@ -131,6 +131,8 @@
     gupnp-tools
     sshfs
     tig
+    vlc
+    libvlc
   ];
 
   services.pcscd.enable = true;
