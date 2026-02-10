@@ -27,6 +27,13 @@
     userEmail = "vlp@fdn.fr";
   };
 
+  home.file.gpgSshKeys = {
+    target = ".gnupg/sshcontrol";
+    text = ''
+      1E1B2ED3022B0BF84835E8A58A473AC7421E68FA 600
+                                               '';
+  }; 
+
   programs.starship = {
     enable = true;
     # custom settings
