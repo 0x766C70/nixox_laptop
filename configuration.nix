@@ -9,10 +9,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-9a65463f-12d4-4138-886e-23f50882a13b".device = "/dev/disk/by-uuid/9a65463f-12d4-4138-886e-23f50882a13b";
   networking.hostName = "vlaptop"; # Define your hostname.
 
   networking.networkmanager.enable = true;
+
+  # Enable firewall for security
+  networking.firewall.enable = true;
 
   time.timeZone = "Europe/Paris";
 
@@ -59,12 +61,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "vlp";
-
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
-
   programs.firefox.enable = true;
 
   nixpkgs.config.allowUnfree = true;
@@ -74,65 +70,90 @@
   services.udev.packages = [ pkgs.gnome-settings-daemon ];
 
   environment.systemPackages = with pkgs; [
+    # Desktop Extensions
     gnomeExtensions.appindicator
+
+    # Development Tools
     python314
-    filezilla
-    pdfarranger
-    openvpn
+    git
     vim
     tmux
-    pass
-    git
+    tig
+
+    # File Transfer & Management
+    filezilla
     wget
+    aria2
+    sshfs
+
+    # Document & PDF Tools
+    pdfarranger
+    ghostscript
+    
+    # Security & VPN
+    openvpn
+    pass
+    gnupg
+    pinentry-gnome3
+    
+    # Terminal Utilities
     neofetch
     nnn
+    btop
+    iotop
+    iftop
+    fzf
+    eza
+    glow
+    cowsay
+    
+    # Archive & Compression
     zip
     xz
     unzip
     p7zip
+    zstd
+    
+    # Search & Text Processing
     ripgrep
     jq
     yq-go
-    eza
-    fzf
+    gnused
+    gawk
+    
+    # Network Tools
     mtr
     iperf3
     dnsutils
     ldns
-    aria2
     socat
     nmap
-    ghostscript
-    ipcalc 
-    cowsay
-    file
-    which
-    tree
-    gnused
-    gnutar
-    gawk
-    zstd
-    gnupg
-    nix-output-monitor
-    glow
-    btop
-    iotop
-    iftop
+    ipcalc
+    ethtool
+    gupnp-tools
+    
+    # System Monitoring & Debugging
     strace
     ltrace
     lsof
     sysstat
     lm_sensors
-    ethtool
     pciutils
     usbutils
-    pinentry-gnome3
-    cups-brother-hll2375dw
-    gupnp-tools
-    sshfs
-    tig
+    nix-output-monitor
+    
+    # Basic System Utilities
+    file
+    which
+    tree
+    gnutar
+    
+    # Media
     vlc
     libvlc
+    
+    # Printing
+    cups-brother-hll2375dw
   ];
 
   services.pcscd.enable = true;
@@ -141,18 +162,6 @@
      pinentryPackage = pkgs.pinentry-gnome3;
      enableSSHSupport = true;
   };
-
-  #fileSystems."/home/vlp/Media" = {
-  #device = "mlc@192.168.101.12:/home/mlc/";
-  #fsType = "sshfs";
-  #options = [
-  #  "nodev"
-  #  "noatime"
-  #  "allow_other"
-  #  "IdentityFile=/home/vlp/.ssh/id_ed25519"
-  #];
-  #};
-
 
   system.stateVersion = "24.11"; # Did you read the comment?
 
