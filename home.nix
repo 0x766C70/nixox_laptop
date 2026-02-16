@@ -10,29 +10,27 @@
   };
 
   home.packages = with pkgs; [
-  gimp
-  exiftool
-  nextcloud-client
-  element-desktop
-  whatsapp-for-linux
-  libreoffice
-  gajim
-  copyq
-  discord
+    gimp
+    exiftool
+    nextcloud-client
+    element-desktop
+    libreoffice
+    copyq
+    discord
   ];
-  
+
   programs.git = {
     enable = true;
     userName = "vlp";
     userEmail = "vlp@fdn.fr";
   };
 
-  home.file.gpgSshKeys = {
-    target = ".gnupg/sshcontrol";
-    text = ''
-      1E1B2ED3022B0BF84835E8A58A473AC7421E68FA 600
-                                               '';
-  }; 
+  #home.file.gpgSshKeys = {
+  #  target = ".gnupg/sshcontrol";
+  #  text = ''
+  #    1E1B2ED3022B0BF84835E8A58A473AC7421E68FA 600
+  #  '';
+  #};
 
   programs.starship = {
     enable = true;
@@ -63,7 +61,6 @@
     enable = true;
     enableCompletion = true;
     bashrcExtra = ''
-      export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
       gpgconf --launch gpg-agent
     '';

@@ -89,13 +89,13 @@
     # Document & PDF Tools
     pdfarranger
     ghostscript
-    
+
     # Security & VPN
     openvpn
     pass
     gnupg
     pinentry-gnome3
-    
+
     # Terminal Utilities
     neofetch
     nnn
@@ -106,21 +106,21 @@
     eza
     glow
     cowsay
-    
+
     # Archive & Compression
     zip
     xz
     unzip
     p7zip
     zstd
-    
+
     # Search & Text Processing
     ripgrep
     jq
     yq-go
     gnused
     gawk
-    
+
     # Network Tools
     mtr
     iperf3
@@ -131,7 +131,7 @@
     ipcalc
     ethtool
     gupnp-tools
-    
+
     # System Monitoring & Debugging
     strace
     ltrace
@@ -141,26 +141,30 @@
     pciutils
     usbutils
     nix-output-monitor
-    
+
     # Basic System Utilities
     file
     which
     tree
     gnutar
-    
+
     # Media
     vlc
     libvlc
-    
+
     # Printing
     cups-brother-hll2375dw
   ];
 
   services.pcscd.enable = true;
   programs.gnupg.agent = {
-     enable = true;
-     pinentryPackage = pkgs.pinentry-gnome3;
-     enableSSHSupport = true;
+    enable = true;
+    pinentryPackage = pkgs.pinentry-gnome3;
+    enableSSHSupport = true;
+  };
+
+  services.tailscale = {
+    enable = true;
   };
 
   system.stateVersion = "24.11"; # Did you read the comment?
