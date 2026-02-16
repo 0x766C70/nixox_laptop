@@ -15,6 +15,7 @@
 
   # Enable firewall for security
   networking.firewall.enable = true;
+  networking.firewall.checkReversePath = "loose";
 
   time.timeZone = "Europe/Paris";
 
@@ -165,6 +166,7 @@
 
   services.tailscale = {
     enable = true;
+    useRoutingFeatures = "client";
   };
 
   system.stateVersion = "24.11"; # Did you read the comment?
