@@ -140,6 +140,33 @@ The bash configuration includes:
 
 SSH config is managed via a symlink to a Nextcloud-synced directory, keeping sensitive connection details out of version control while maintaining portability.
 
+#### GPG as SSH Key
+
+This configuration uses GPG keys for SSH authentication. To set this up:
+
+1. **Find your GPG keygrip:**
+   ```bash
+   gpg --list-keys --with-keygrip
+   ```
+
+2. **Add the keygrip to `sshcontrol`:** The keygrip (not the key ID!) is automatically configured in `~/.gnupg/sshcontrol` via Home Manager.
+
+3. **Verify the setup:**
+   ```bash
+   # Check that GPG agent is running with SSH support
+   echo $SSH_AUTH_SOCK
+   # Should output something like: /run/user/1000/gnupg/d.xxx/S.gpg-agent.ssh
+   
+   # List available SSH keys
+   ssh-add -L
+   # Should display your public key
+   ```
+
+4. **Troubleshooting:**
+   - If `ssh-add -L` shows nothing, restart GPG agent: `gpgconf --kill gpg-agent`
+   - Make sure the keygrip in `home.nix` matches your actual GPG key
+   - Check GPG agent logs: `journalctl --user -u gpg-agent -n 50`
+
 ## 🔄 Maintenance
 
 ### Updating the System
