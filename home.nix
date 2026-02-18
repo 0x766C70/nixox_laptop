@@ -25,12 +25,16 @@
     userEmail = "vlp@fdn.fr";
   };
 
-  #home.file.gpgSshKeys = {
-  #  target = ".gnupg/sshcontrol";
-  #  text = ''
-  #    1E1B2ED3022B0BF84835E8A58A473AC7421E68FA 600
-  #  '';
-  #};
+  # GPG key for SSH authentication
+  # The keygrip below tells gpg-agent which GPG key to use for SSH
+  # To find your keygrip: gpg --list-keys --with-keygrip
+  # TODO: Replace this keygrip with your own GPG key's keygrip
+  home.file.gpgSshKeys = {
+    target = ".gnupg/sshcontrol";
+    text = ''
+      1E1B2ED3022B0BF84835E8A58A473AC7421E68FA 600
+    '';
+  };
 
   programs.starship = {
     enable = true;

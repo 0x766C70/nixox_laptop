@@ -140,6 +140,37 @@ The bash configuration includes:
 
 SSH config is managed via a symlink to a Nextcloud-synced directory, keeping sensitive connection details out of version control while maintaining portability.
 
+#### GPG as SSH Key
+
+This configuration uses GPG keys for SSH authentication. To set this up:
+
+1. **Find your GPG keygrip:**
+   ```bash
+   gpg --list-keys --with-keygrip
+   ```
+
+2. **Update `home.nix` with your keygrip:** 
+   - Open `home.nix` and find the `home.file.gpgSshKeys` section
+   - Replace the existing keygrip with yours (the keygrip is the long hex string under each key)
+   - Save the file and rebuild: `sudo nixos-rebuild switch --flake .#vlaptop`
+   - Home Manager will automatically create `~/.gnupg/sshcontrol` with your keygrip
+
+3. **Verify the setup:**
+   ```bash
+   # Check that GPG agent is running with SSH support
+   echo $SSH_AUTH_SOCK
+   # Should output something like: /run/user/1000/gnupg/d.xxx/S.gpg-agent.ssh
+   
+   # List available SSH keys
+   ssh-add -L
+   # Should display your public key
+   ```
+
+4. **Troubleshooting:**
+   - If `ssh-add -L` shows nothing, restart GPG agent: `gpgconf --kill gpg-agent`
+   - Make sure the keygrip in `home.nix` matches your actual GPG key
+   - Check GPG agent logs: `journalctl --user -u gpg-agent -n 50`
+
 ## 🔄 Maintenance
 
 ### Updating the System
