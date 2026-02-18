@@ -149,7 +149,11 @@ This configuration uses GPG keys for SSH authentication. To set this up:
    gpg --list-keys --with-keygrip
    ```
 
-2. **Add the keygrip to `sshcontrol`:** The keygrip (not the key ID!) is automatically configured in `~/.gnupg/sshcontrol` via Home Manager.
+2. **Update `home.nix` with your keygrip:** 
+   - Open `home.nix` and find the `home.file.gpgSshKeys` section
+   - Replace the existing keygrip with yours (the keygrip is the long hex string under each key)
+   - Save the file and rebuild: `sudo nixos-rebuild switch --flake .#vlaptop`
+   - Home Manager will automatically create `~/.gnupg/sshcontrol` with your keygrip
 
 3. **Verify the setup:**
    ```bash

@@ -28,6 +28,7 @@
   # GPG key for SSH authentication
   # The keygrip below tells gpg-agent which GPG key to use for SSH
   # To find your keygrip: gpg --list-keys --with-keygrip
+  # TODO: Replace this keygrip with your own GPG key's keygrip
   home.file.gpgSshKeys = {
     target = ".gnupg/sshcontrol";
     text = ''
