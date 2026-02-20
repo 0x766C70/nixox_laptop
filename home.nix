@@ -76,6 +76,15 @@
     };
   };
 
+  # Tailscale exit-node selector script
+  home.file."bin/exit.sh" = {
+    source = ./bin/exit.sh;
+    executable = true;
+  };
+
+  # Ensure ~/bin is on PATH
+  home.sessionPath = [ "${config.home.homeDirectory}/bin" ];
+
   # SSH config symlink
   home.file.".ssh/config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Nextcloud/Documents/it/ssh/config";
 
