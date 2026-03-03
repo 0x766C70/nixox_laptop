@@ -66,6 +66,13 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # Expose local custom packages into pkgs via an overlay
+  nixpkgs.overlays = [
+    (final: prev: {
+      steamcontroller-udev-rules = final.callPackage ./pkgs/default.nix {};
+    })
+  ];
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   services.udev.packages = [ pkgs.gnome-settings-daemon pkgs.steamcontroller-udev-rules];
