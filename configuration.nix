@@ -68,7 +68,9 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  services.udev.packages = [ pkgs.gnome-settings-daemon ];
+  services.udev.packages = [ pkgs.gnome-settings-daemon pkgs.steamcontroller-udev-rules];
+
+  services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
     # Desktop Extensions
