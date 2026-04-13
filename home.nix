@@ -17,6 +17,7 @@
     libreoffice
     copyq
     discord
+    thunderbird
   ];
 
   programs.git = {

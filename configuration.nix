@@ -59,7 +59,12 @@
   users.users.vlp = {
     isNormalUser = true;
     description = "vlp";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "inputs" ];
+  };
+
+  security.pam.services = {
+    login.u2fAuth = true;
+    sudo.u2fAuth = true;
   };
 
   programs.firefox.enable = true;
@@ -105,6 +110,8 @@
     pass
     gnupg
     pinentry-gnome3
+    pam_u2f
+    pamtester
 
     # Terminal Utilities
     neofetch
@@ -157,7 +164,11 @@
     which
     tree
     gnutar
-
+    gamepad-tool
+    joycond
+    evtest
+    SDL
+    
     # Media
     vlc
     libvlc
