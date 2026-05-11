@@ -172,6 +172,9 @@
     # Media
     vlc
     libvlc
+    hugo
+    libheif
+    imagemagick
 
     # Printing
     cups-brother-hll2375dw

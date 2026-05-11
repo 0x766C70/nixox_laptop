@@ -24,12 +24,10 @@
     enable = true;
     userName = "vlp";
     userEmail = "vlp@fdn.fr";
+    signing.key = "F62680CAF69CC863";
+    extraConfig.commit.gpgsign = true;
   };
 
-  # GPG key for SSH authentication
-  # The keygrip below tells gpg-agent which GPG key to use for SSH
-  # To find your keygrip: gpg --list-keys --with-keygrip
-  # TODO: Replace this keygrip with your own GPG key's keygrip
   home.file.gpgSshKeys = {
     target = ".gnupg/sshcontrol";
     text = ''
@@ -55,7 +53,6 @@
       env.TERM = "xterm-256color";
       font = {
         size = 12;
-        #draw_bold_text_with_bright_colors = true;
       };
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;
