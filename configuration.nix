@@ -123,6 +123,7 @@
     eza
     glow
     cowsay
+    dmidecode
 
     # Archive & Compression
     zip
