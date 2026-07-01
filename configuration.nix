@@ -59,7 +59,10 @@
   users.users.vlp = {
     isNormalUser = true;
     description = "vlp";
-    extraGroups = [ "networkmanager" "wheel" "inputs" ];
+    extraGroups = [ "networkmanager" "wheel" "inputs" "syncthing"];
+  };
+  users.users.syncthing = {
+    extraGroups = [ "users" ];
   };
 
   security.pam.services = {
@@ -176,10 +179,15 @@
     hugo
     libheif
     imagemagick
+    libimobiledevice
+    ifuse
+    immich-cli
 
     # Printing
     cups-brother-hll2375dw
   ];
+
+  services.usbmuxd.enable = true;
 
   services.pcscd.enable = true;
   programs.gnupg.agent = {
@@ -191,6 +199,13 @@
   services.tailscale = {
     enable = true;
     useRoutingFeatures = "client";
+  };
+
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+    #guiAddress = "0.0.0.0:8384";
+    dataDir = "/mnt/Syncthing/";
   };
 
   system.stateVersion = "24.11"; # Did you read the comment?
