@@ -59,7 +59,7 @@
   users.users.vlp = {
     isNormalUser = true;
     description = "vlp";
-    extraGroups = [ "networkmanager" "wheel" "inputs" "syncthing"];
+    extraGroups = [ "networkmanager" "wheel" "inputs" "syncthing" ];
   };
   users.users.syncthing = {
     extraGroups = [ "users" ];
@@ -204,7 +204,6 @@
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
-    #guiAddress = "0.0.0.0:8384";
     dataDir = "/mnt/Syncthing/";
   };
 

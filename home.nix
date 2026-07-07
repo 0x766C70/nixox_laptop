@@ -12,7 +12,6 @@
   home.packages = with pkgs; [
     gimp
     exiftool
-    nextcloud-client
     element-desktop
     libreoffice
     copyq
@@ -82,9 +81,6 @@
 
   # Ensure ~/bin is on PATH
   home.sessionPath = [ "${config.home.homeDirectory}/bin" ];
-
-  # SSH config symlink
-  home.file.".ssh/config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Nextcloud/Documents/it/ssh/config";
 
   home.stateVersion = "24.11";
   programs.home-manager.enable = true;
